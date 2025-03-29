@@ -66,9 +66,8 @@
     color: white;
     cursor: pointer;
 }
-
-
 </style>
+
 <style>
     .product-img {
         width: 100%;
@@ -239,6 +238,4 @@
         });
     </script>
 </body>
-
-
 </html>

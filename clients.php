@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shree Graphics Design </title>
 
+  
 <style>
 .action-btn {
   display: flex;
@@ -815,7 +816,6 @@ mark.highlight {
 
   </header>
 
-
   <!--
     - MAIN
   -->
@@ -1370,6 +1370,26 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+<!-- For searcha button -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const searchBar = document.getElementById("searchBar");
+    const showcases = document.querySelectorAll(".showcase");
+
+    searchBar.addEventListener("keyup", function () {
+        const query = searchBar.value.toLowerCase();
+
+        showcases.forEach(showcase => {
+            const title = showcase.querySelector(".showcase-title").innerText.toLowerCase();
+            if (title.includes(query)) {
+                showcase.style.display = "block";
+            } else {
+                showcase.style.display = "none";
+            }
+        });
+    });
+});
+</script>
 
 </body>
 

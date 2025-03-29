@@ -26,6 +26,31 @@
     rel="stylesheet">
 
     <style>
+.action-btn {
+  display: flex;
+  flex-direction: column; /* Stacks the icon and text vertically */
+  align-items: center; /* Centers them horizontally */
+  justify-content: center; /* Centers them vertically */
+  gap: 4px; /* Adds space between icon and text */
+  padding: 8px 12px;
+  font-size: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.action-btn ion-icon {
+  font-size: 30px; /* Adjust icon size */
+}
+
+.action-btn p {
+  margin: 0;
+  font-size: 15px; /* Adjust text size */
+}
+
+</style> 
+
+    <style>
 .sidebar {
   width: 300px;
   background-color: #fff;
@@ -164,521 +189,561 @@
   <!--
     - HEADER
   -->
+
   <header>
 
 
-    <div class="header-main">
+<div class="header-main">
 
-      <div class="container">
+  <div class="container">
 
-      <a href="index.php" class="header-logo">
-        <img src="./assets/logo/Shree_Graphics_Design.png" alt="Logo" width="100" height="60">
-        </a>
+    <a href="index.php" class="header-logo">
+    <img src="./assets/logo/Shree_Graphics_Design.png" alt="Logo" width="100" height="60">
+    <!-- Shree Graphics Design -->
+    </a>
 
-        <div class="header-search-container">
+    <div class="header-search-container">
+<input type="search" id="searchBar" name="search" class="search-field" placeholder="Enter your product name...">
+<button class="search-btn">
+    <ion-icon name="search-outline"></ion-icon>
+</button>
+</div>
 
-          <input type="search" name="search" class="search-field" placeholder="Enter your product name...">
 
-          <button class="search-btn">
-            <ion-icon name="search-outline"></ion-icon>
-          </button>
 
-        </div>
+    <div class="header-user-actions">
 
-        <div class="header-user-actions">
-          <a href="Awards.php">
-          <button class="action-btn">
-            <ion-icon name="trophy-outline"></ion-icon></a>
-          </button>
-        </a>
-        </div>
+    <a href="about.php">
+      <button class="action-btn">
+      <ion-icon name="bookmark-outline"></ion-icon>
+      <p>About</p>
 
-      </div>
+     </button>
+
+
+
+    <a href="services.php">
+      <button class="action-btn">
+        <ion-icon name="apps-outline"></ion-icon>
+        <p>Services</p>
+
+      </button>
+    </a>
+     
+    <a href="clients.php">
+<button class="action-btn">
+<ion-icon name="trophy-outline"></ion-icon>
+<p>Clients</p>
+</button>
+</a>
+
 
     </div>
 
+  </div>
 
-    <nav class="desktop-navigation-menu">
+</div>
 
-      <div class="container">
 
-        <ul class="desktop-menu-category-list">
+<nav class="desktop-navigation-menu">
 
-          <li class="menu-category">
-            <a href="index.php" class="menu-title">Embroidery 
+  <div class="container">
+
+    <ul class="desktop-menu-category-list">
+
+      <li class="menu-category">
+        <a href="index.php" class="menu-title">Embroidery 
+        </a>
+      </li>
+
+      <li class="menu-category">
+        <a href="about.php" class="menu-title">About
+        </a>
+      </li>
+
+      <li class="menu-category">
+        <a href="services.php" class="menu-title">Services
+        </a>
+      </li>
+
+
+      <li class="menu-category">
+        <a href="tshirt.php" class="menu-title">Tshirt</a>
+
+        <ul class="dropdown-list">
+
+          <li class="dropdown-item">
+            <a href="round_neck.php">Round Neck
             </a>
           </li>
 
-          <li class="menu-category">
-            <a href="about.php" class="menu-title">About
-            </a>
+          <li class="dropdown-item">
+            <a href="v_neck.php">V-Neck</a>
           </li>
 
-          <li class="menu-category">
-            <a href="services.php" class="menu-title">Services
-            </a>
+          <li class="dropdown-item">
+            <a href="pool_tshirt.php">Pool T-Shirt</a>
           </li>
 
-
-          <li class="menu-category">
-            <a href="tshirt.php" class="menu-title">Tshirt</a>
-
-            <ul class="dropdown-list">
-
-              <li class="dropdown-item">
-                <a href="round_neck.php">Round Neck
-                </a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="v_neck.php">V-Neck</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="pool_tshirt.php">Pool T-Shirt</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="cutSew.php">Cut and sew T-Shirt</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="basicpool.php">Basic Pool T-Shirt</a>
-              </li>
-            </ul>
+          <li class="dropdown-item">
+            <a href="cutSew.php">Cut and sew T-Shirt</a>
           </li>
 
-          <li class="menu-category">
-            <a href="Apparels.php" class="menu-title">Apparels</a>
+          <li class="dropdown-item">
+            <a href="basicpool.php">Basic Pool T-Shirt</a>
+          </li>
+        </ul>
+      </li>
 
-            <ul class="dropdown-list">
+      <li class="menu-category">
+        <a href="Apparels.php" class="menu-title">Apparels</a>
 
-              <li class="dropdown-item">
-                <a href="cap.php">Cap</a>
-              </li>
+        <ul class="dropdown-list">
 
-              <li class="dropdown-item">
-                <a href="jackets.php">Jackets</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="sweartshirt.php">Sweartshirt</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="denimShirt.php">Denim Shirt</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="windcheaters.php">Windcheaters</a>
-              </li>
-
-             
-
-            </ul>
+          <li class="dropdown-item">
+            <a href="cap.php">Cap</a>
           </li>
 
-          <li class="menu-category">
-            <a href="travel.php" class="menu-title">Travel</a>
-
-            <ul class="dropdown-list">
-
-              <li class="dropdown-item">
-                <a href="handbag.php">Hand Bag</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="strolleybag.php">Strolley Bags</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="travelbag.php">Travel Bags</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="backpacks.php">Back Packs</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="laptopbag.php">Laptop Bags</a>
-              </li>
-
-            
-
-              <li class="dropdown-item">
-                <a href="trekkingbag.php">Trekking Bag</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="passport.php">Passport Holder</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="ipad.php">I Pad Pouch</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="laptophandbag.php">Laptop Hand Bag</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="laptopPouch.php"> Laptop Pouch</a>
-              </li>
-
-
-            </ul>
+          <li class="dropdown-item">
+            <a href="jackets.php">Jackets</a>
           </li>
 
-          <li class="menu-category">
-            <a href="leather.php" class="menu-title">Leather</a>
-
-            <ul class="dropdown-list">
-
-              <li class="dropdown-item">
-                <a href="leatherofficebag.php">Leather office Bags</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="leatherpassport.php">Leather Passport Holder</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="leatherwallets.php">Leather Wallets</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="leatherorganizer.php">Leather Organizers</a>
-              </li>
-
-            </ul>
+          <li class="dropdown-item">
+            <a href="sweartshirt.php">Sweartshirt</a>
           </li>
 
-          <li class="menu-category">
-            <a href="uniforms.php" class="menu-title">Uniforms</a>
-
-            <ul class="dropdown-list">
-
-              <li class="dropdown-item">
-                <a href="school.php">School Uniforms </a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="corporate.php">Corporate Uniforms</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="security.php"> Security Uniforms</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="hotal.php"> Hotel & Restaurant Uniforms </a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="medical.php"> Medical & Hospital Uniforms </a>
-              </li>
-
-            </ul>
+          <li class="dropdown-item">
+            <a href="denimShirt.php">Denim Shirt</a>
           </li>
 
-
-
-
-          <li class="menu-category">
-            <a href="clients.php" class="menu-title">Clients</a>
+          <li class="dropdown-item">
+            <a href="windcheaters.php">Windcheaters</a>
           </li>
 
-          <li class="menu-category">
-            <a href="contact.php" class="menu-title">Contact
-            </a>
+         
+
+        </ul>
+      </li>
+
+      <li class="menu-category">
+        <a href="travel.php" class="menu-title">Travel</a>
+
+        <ul class="dropdown-list">
+
+          <li class="dropdown-item">
+            <a href="handbag.php">Hand Bag</a>
+          </li>
+
+          <li class="dropdown-item">
+            <a href="strolleybag.php">Strolley Bags</a>
+          </li>
+
+          <li class="dropdown-item">
+            <a href="travelbag.php">Travel Bags</a>
+          </li>
+
+          <li class="dropdown-item">
+            <a href="backpacks.php">Back Packs</a>
+          </li>
+
+          <li class="dropdown-item">
+            <a href="laptopbag.php">Laptop Bags</a>
+          </li>
+
+         
+
+          <li class="dropdown-item">
+            <a href="trekkingbag.php">Trekking Bag</a>
+          </li>
+
+          <li class="dropdown-item">
+            <a href="passport.php">Passport Holder</a>
+          </li>
+
+          <li class="dropdown-item">
+            <a href="ipad.php">I Pad Pouch</a>
+          </li>
+
+          <li class="dropdown-item">
+            <a href="laptophandbag.php">Laptop Hand Bag</a>
+          </li>
+
+          <li class="dropdown-item">
+            <a href="laptopPouch.php"> Laptop Pouch</a>
           </li>
 
 
         </ul>
+      </li>
 
-      </div>
+      <li class="menu-category">
+        <a href="leather.php" class="menu-title">Leather</a>
 
-    </nav>
+        <ul class="dropdown-list">
 
-    <div class="mobile-bottom-navigation">
+          <li class="dropdown-item">
+            <a href="leatherofficebag.php">Leather office Bags</a>
+          </li>
 
-      <button class="action-btn" data-mobile-menu-open-btn>
-        <ion-icon name="menu-outline"></ion-icon>
+          <li class="dropdown-item">
+            <a href="leatherpassport.php">Leather Passport Holder</a>
+          </li>
+
+          <li class="dropdown-item">
+            <a href="leatherwallets.php">Leather Wallets</a>
+          </li>
+
+          <li class="dropdown-item">
+            <a href="leatherorganizer.php">Leather Organizers</a>
+          </li>
+
+
+        </ul>
+      </li>
+
+      <li class="menu-category">
+        <a href="uniforms.php" class="menu-title">Uniforms</a>
+
+        <ul class="dropdown-list">
+
+          <li class="dropdown-item">
+            <a href="school.php">School Uniforms </a>
+          </li>
+
+          <li class="dropdown-item">
+            <a href="corporate.php">Corporate Uniforms</a>
+          </li>
+
+          <li class="dropdown-item">
+            <a href="security.php"> Security Uniforms</a>
+          </li>
+
+          <li class="dropdown-item">
+            <a href="hotal.php"> Hotel & Restaurant Uniforms </a>
+          </li>
+
+          <li class="dropdown-item">
+            <a href="medical.php"> Medical & Hospital Uniforms </a>
+          </li>
+
+          <li class="dropdown-item">
+            <a href="bank.php">Bank Uniforms </a>
+          </li>
+
+
+          <li class="dropdown-item">
+            <a href="housekeeping.php">House Keeping Staff Uniforms </a>
+          </li>
+
+          <li class="dropdown-item">
+            <a href="delivery.php">Delivery staff Uniforms </a>
+          </li>
+
+          <li class="dropdown-item">
+            <a href="sports.php">Sports Uniforms </a>
+          </li>
+
+        </ul>
+      </li>
+
+
+
+
+      <li class="menu-category">
+        <a href="clients.php" class="menu-title">Clients</a>
+      </li>
+
+      <li class="menu-category">
+        <a href="contact.php" class="menu-title">Contact
+        </a>
+      </li>
+
+
+    </ul>
+
+  </div>
+
+</nav>
+
+<div class="mobile-bottom-navigation">
+
+  <button class="action-btn" data-mobile-menu-open-btn>
+    <ion-icon name="menu-outline"></ion-icon>
+  </button>
+
+  <button class="action-btn">
+    <ion-icon name="bag-handle-outline"></ion-icon>
+
+  </button>
+
+  <button class="action-btn">
+    <ion-icon name="home-outline"></ion-icon>
+  </button>
+
+  <button class="action-btn">
+    <ion-icon name="heart-outline"></ion-icon>
+
+  </button>
+
+  <button class="action-btn" data-mobile-menu-open-btn>
+    <ion-icon name="grid-outline"></ion-icon>
+  </button>
+
+</div>
+
+<nav class="mobile-navigation-menu  has-scrollbar" data-mobile-menu>
+
+  <div class="menu-top">
+    <h2 class="menu-title">Menu</h2>
+
+    <button class="menu-close-btn" data-mobile-menu-close-btn>
+      <ion-icon name="close-outline"></ion-icon>
+    </button>
+  </div>
+
+  <ul class="mobile-menu-category-list">
+
+    <li class="menu-category">
+      <a href="index.php" class="menu-title">Embroidery Designing</a>
+    </li>
+
+    <li class="menu-category">
+      <a href="about.php" class="menu-title">About</a>
+    </li>
+
+
+    <li class="menu-category">
+      <a href="services.php" class="menu-title">Services</a>
+    </li>
+
+    <li class="menu-category">
+
+      <button class="accordion-menu" data-accordion-btn>
+        <a href="tshirt.php">
+        <p class="menu-title">T-shirt</p>
+        </a>
+        <div>
+          <ion-icon name="add-outline" class="add-icon"></ion-icon>
+          <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+        </div>
       </button>
 
-      <button class="action-btn">
-        <ion-icon name="bag-handle-outline"></ion-icon>
+      <ul class="submenu-category-list" data-accordion>
 
-      </button>
-
-      <button class="action-btn">
-        <ion-icon name="home-outline"></ion-icon>
-      </button>
-
-      <button class="action-btn">
-        <ion-icon name="heart-outline"></ion-icon>
-
-      </button>
-
-      <button class="action-btn" data-mobile-menu-open-btn>
-        <ion-icon name="grid-outline"></ion-icon>
-      </button>
-
-    </div>
-
-    <nav class="mobile-navigation-menu  has-scrollbar" data-mobile-menu>
-
-      <div class="menu-top">
-        <h2 class="menu-title">Menu</h2>
-
-        <button class="menu-close-btn" data-mobile-menu-close-btn>
-          <ion-icon name="close-outline"></ion-icon>
-        </button>
-      </div>
-
-      <ul class="mobile-menu-category-list">
-
-        <li class="menu-category">
-          <a href="index.php" class="menu-title">Embroidery Designing</a>
+        <li class="submenu-category">
+          <a href="round_neck.php" class="submenu-title">Round Neck</a>
         </li>
 
-        <li class="menu-category">
-          <a href="about.php" class="menu-title">About</a>
+        <li class="submenu-category">
+          <a href="v_neck.php" class="submenu-title">V-Neck</a>
         </li>
 
-
-        <li class="menu-category">
-          <a href="services.php" class="menu-title">Services</a>
+        <li class="submenu-category">
+          <a href="pool_tshirt.php" class="submenu-title">Pool T-Shirt</a>
         </li>
 
-        <li class="menu-category">
-
-          <button class="accordion-menu" data-accordion-btn>
-            <a href="tshirt.php">
-            <p class="menu-title">T-shirt</p>
-            </a>
-            <div>
-              <ion-icon name="add-outline" class="add-icon"></ion-icon>
-              <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-            </div>
-          </button>
-
-          <ul class="submenu-category-list" data-accordion>
-
-            <li class="submenu-category">
-              <a href="round_neck.php" class="submenu-title">Round Neck</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="v_neck.php" class="submenu-title">V-Neck</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="pool_tshirt.php" class="submenu-title">Pool T-Shirt</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="cutSew.php" class="submenu-title">Cut and sew T-Shirt</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="basicpool.php" class="submenu-title">Basic Pool T-Shirt</a>
-            </li>
-
-          </ul>
-
+        <li class="submenu-category">
+          <a href="cutSew.php" class="submenu-title">Cut and sew T-Shirt</a>
         </li>
 
-        <li class="menu-category">
-
-          <button class="accordion-menu" data-accordion-btn>
-            <a href="apparels.php">
-            <p class="menu-title">Apparels</p>
-            </a>
-            <div>
-              <ion-icon name="add-outline" class="add-icon"></ion-icon>
-              <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-            </div>
-          </button>
-
-          <ul class="submenu-category-list" data-accordion>
-
-            <li class="submenu-category">
-              <a href="cap.php" class="submenu-title">Cap</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="jackets.php" class="submenu-title">Jackets</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="sweartshirt.php" class="submenu-title">Sweartshirt</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="denimShirt.php" class="submenu-title"> Denim Shirt</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="windcheaters.php" class="submenu-title"> Windcheaters</a>
-            </li>
-
-            
-
-          </ul>
-
-        </li>
-
-        <li class="menu-category">
-
-          <button class="accordion-menu" data-accordion-btn>
-            <a href="travel.php">
-            <p class="menu-title">Travel</p>
-            </a>
-            <div>
-              <ion-icon name="add-outline" class="add-icon"></ion-icon>
-              <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-            </div>
-          </button>
-
-          <ul class="submenu-category-list" data-accordion>
-
-            <li class="submenu-category">
-              <a href="handbag.php" class="submenu-title">Hand Bag</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="strolleybag.php" class="submenu-title">Strolley Bags</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="travelbag.php" class="submenu-title">Travel Bags</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="backpacks.php" class="submenu-title">Back Packs</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="laptopbag.php" class="submenu-title">Laptop Bags</a>
-            </li>
-
-        
-
-            <li class="submenu-category">
-              <a href="trekkingbag.php" class="submenu-title">Trekking Bag</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="passport.php" class="submenu-title">Passport Holder</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="ipad.php" class="submenu-title">I Pad Pouch</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="laptophandbag.php" class="submenu-title">Laptop Hand Bag</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="laptopPouch.php" class="submenu-title">Laptop Pouch</a>
-            </li>
-
-          </ul>
-
-        </li>
-
-        <li class="menu-category">
-
-          <button class="accordion-menu" data-accordion-btn>
-            <a href="leather.php">
-            <p class="menu-title">Leather</p>
-            </a>
-            <div>
-              <ion-icon name="add-outline" class="add-icon"></ion-icon>
-              <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-            </div>
-          </button>
-
-          <ul class="submenu-category-list" data-accordion>
-
-            <li class="submenu-category">
-              <a href="leatherofficebag.php" class="submenu-title">Leather office Bags</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="leatherpassport.php" class="submenu-title">Leather Passport Holder</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="leatherwallets.php" class="submenu-title">Leather Wallets</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="leatherorganizer.php" class="submenu-title">Leather Organizers</a>
-            </li>
-
-
-          </ul>
-
-        </li>
-
-        <li class="menu-category">
-
-          <button class="accordion-menu" data-accordion-btn>
-            <a href="uniforms.php">
-            <p class="menu-title">Uniforms</p>
-            </a>
-            <div>
-              <ion-icon name="add-outline" class="add-icon"></ion-icon>
-              <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-            </div>
-          </button>
-
-          <ul class="submenu-category-list" data-accordion>
-
-            <li class="submenu-category">
-              <a href="school.php" class="submenu-title">School Uniforms</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="corporate.php" class="submenu-title">Corporate Uniforms
-              </a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="security.php" class="submenu-title">Security Uniforms
-              </a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="hotal.php" class="submenu-title">Hotel & Restaurant Uniforms
-              </a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="medical.php" class="submenu-title">Medical & Hospital Uniforms
-              </a>
-            </li>
-
-          </ul>
-
-        </li>
-
-        <li class="menu-category">
-          <a href="clients.php" class="menu-title">Clients</a>
-        </li>
-
-        <li class="menu-category">
-          <a href="contact.php" class="menu-title">Contact</a>
+        <li class="submenu-category">
+          <a href="basicpool.php" class="submenu-title">Basic Pool T-Shirt</a>
         </li>
 
       </ul>
 
-    </nav>
+    </li>
 
-  </header>
+    <li class="menu-category">
+
+      <button class="accordion-menu" data-accordion-btn>
+        <a href="apparels.php">
+        <p class="menu-title">Apparels</p>
+        </a>
+        <div>
+          <ion-icon name="add-outline" class="add-icon"></ion-icon>
+          <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+        </div>
+      </button>
+
+      <ul class="submenu-category-list" data-accordion>
+
+        <li class="submenu-category">
+          <a href="cap.php" class="submenu-title">Cap</a>
+        </li>
+
+        <li class="submenu-category">
+          <a href="jackets.php" class="submenu-title">Jackets</a>
+        </li>
+
+        <li class="submenu-category">
+          <a href="sweartshirt.php" class="submenu-title">Sweartshirt</a>
+        </li>
+
+        <li class="submenu-category">
+          <a href="denimShirt.php" class="submenu-title"> Denim Shirt</a>
+        </li>
+
+        <li class="submenu-category">
+          <a href="windcheaters.php" class="submenu-title"> Windcheaters</a>
+        </li>
+
+        
+
+      </ul>
+
+    </li>
+
+    <li class="menu-category">
+
+      <button class="accordion-menu" data-accordion-btn>
+        <a href="travel.php">
+        <p class="menu-title">Travel</p>
+        </a>
+        <div>
+          <ion-icon name="add-outline" class="add-icon"></ion-icon>
+          <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+        </div>
+      </button>
+
+      <ul class="submenu-category-list" data-accordion>
+
+        <li class="submenu-category">
+          <a href="handbag.php" class="submenu-title">Hand Bag</a>
+        </li>
+
+        <li class="submenu-category">
+          <a href="strolleybag.php" class="submenu-title">Strolley Bags</a>
+        </li>
+
+        <li class="submenu-category">
+          <a href="travelbag.php" class="submenu-title">Travel Bags</a>
+        </li>
+
+        <li class="submenu-category">
+          <a href="backpacks.php" class="submenu-title">Back Packs</a>
+        </li>
+
+        <li class="submenu-category">
+          <a href="laptopbag.php" class="submenu-title">Laptop Bags</a>
+        </li>
+
+       
+
+        <li class="submenu-category">
+          <a href="trekkingbag.php" class="submenu-title">Trekking Bag</a>
+        </li>
+
+        <li class="submenu-category">
+          <a href="passport.php" class="submenu-title">Passport Holder</a>
+        </li>
+
+        <li class="submenu-category">
+          <a href="ipad.php" class="submenu-title">I Pad Pouch</a>
+        </li>
+
+        <li class="submenu-category">
+          <a href="laptophandbag.php" class="submenu-title">Laptop Hand Bag</a>
+        </li>
+
+        <li class="submenu-category">
+          <a href="laptopPouch.php" class="submenu-title">Laptop Pouch</a>
+        </li>
+
+      </ul>
+
+    </li>
+
+    <li class="menu-category">
+
+      <button class="accordion-menu" data-accordion-btn>
+        <a href="leather.php">
+        <p class="menu-title">Leather</p>
+        </a>
+        <div>
+          <ion-icon name="add-outline" class="add-icon"></ion-icon>
+          <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+        </div>
+      </button>
+
+      <ul class="submenu-category-list" data-accordion>
+
+        <li class="submenu-category">
+          <a href="leatherofficebag.php" class="submenu-title">Leather office Bags</a>
+        </li>
+
+        <li class="submenu-category">
+          <a href="leatherpassport.php" class="submenu-title">Leather Passport Holder</a>
+        </li>
+
+        <li class="submenu-category">
+          <a href="leatherwallets.php" class="submenu-title">Leather Wallets</a>
+        </li>
+
+        <li class="submenu-category">
+          <a href="leatherorganizer.php" class="submenu-title">Leather Organizers</a>
+        </li>
+
+
+      </ul>
+
+    </li>
+
+    <li class="menu-category">
+
+      <button class="accordion-menu" data-accordion-btn>
+        <a href="uniforms.php">
+        <p class="menu-title">Uniforms</p>
+        </a>
+        <div>
+          <ion-icon name="add-outline" class="add-icon"></ion-icon>
+          <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+        </div>
+      </button>
+
+      <ul class="submenu-category-list" data-accordion>
+
+        <li class="submenu-category">
+          <a href="school.php" class="submenu-title">School Uniforms</a>
+        </li>
+
+        <li class="submenu-category">
+          <a href="corporate.php" class="submenu-title">Corporate Uniforms
+          </a>
+        </li>
+
+        <li class="submenu-category">
+          <a href="security.php" class="submenu-title">Security Uniforms
+          </a>
+        </li>
+
+        <li class="submenu-category">
+          <a href="hotal.php" class="submenu-title">Hotel & Restaurant Uniforms
+          </a>
+        </li>
+
+        <li class="submenu-category">
+          <a href="medical.php" class="submenu-title">Medical & Hospital Uniforms
+          </a>
+        </li>
+
+      </ul>
+
+    </li>
+
+    <li class="menu-category">
+      <a href="clients.php" class="menu-title">Clients</a>
+    </li>
+
+    <li class="menu-category">
+      <a href="contact.php" class="menu-title">Contact</a>
+    </li>
+
+  </ul>
+
+</nav>
+
+</header>
 
 
   <!--
@@ -1088,7 +1153,26 @@ $category_filter = 'passport'; ?>
     // Set an initial code when the page loads
     window.onload = refreshCode;
   </script>
-  
+  <!-- For searcha button -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const searchBar = document.getElementById("searchBar");
+    const showcases = document.querySelectorAll(".showcase");
+
+    searchBar.addEventListener("keyup", function () {
+        const query = searchBar.value.toLowerCase();
+
+        showcases.forEach(showcase => {
+            const title = showcase.querySelector(".showcase-title").innerText.toLowerCase();
+            if (title.includes(query)) {
+                showcase.style.display = "block";
+            } else {
+                showcase.style.display = "none";
+            }
+        });
+    });
+});
+</script>
 </body>
 
 </html>

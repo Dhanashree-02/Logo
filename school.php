@@ -26,6 +26,31 @@
     rel="stylesheet">
 
     <style>
+.action-btn {
+  display: flex;
+  flex-direction: column; /* Stacks the icon and text vertically */
+  align-items: center; /* Centers them horizontally */
+  justify-content: center; /* Centers them vertically */
+  gap: 4px; /* Adds space between icon and text */
+  padding: 8px 12px;
+  font-size: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.action-btn ion-icon {
+  font-size: 30px; /* Adjust icon size */
+}
+
+.action-btn p {
+  margin: 0;
+  font-size: 15px; /* Adjust text size */
+}
+
+</style> 
+
+    <style>
 .sidebar {
   width: 300px;
   background-color: #fff;
@@ -174,26 +199,47 @@
 
       <div class="container">
 
-      <a href="index.php" class="header-logo">
+        <a href="index.php" class="header-logo">
         <img src="./assets/logo/Shree_Graphics_Design.png" alt="Logo" width="100" height="60">
+        <!-- Shree Graphics Design -->
         </a>
 
         <div class="header-search-container">
+    <input type="search" id="searchBar" name="search" class="search-field" placeholder="Enter your product name...">
+    <button class="search-btn">
+        <ion-icon name="search-outline"></ion-icon>
+    </button>
+</div>
 
-          <input type="search" name="search" class="search-field" placeholder="Enter your product name...">
 
-          <button class="search-btn">
-            <ion-icon name="search-outline"></ion-icon>
-          </button>
-
-        </div>
 
         <div class="header-user-actions">
-          <a href="Awards.php">
+
+        <a href="about.php">
           <button class="action-btn">
-            <ion-icon name="trophy-outline"></ion-icon></a>
+          <ion-icon name="bookmark-outline"></ion-icon>
+          <p>About</p>
+
+         </button>
+
+
+
+        <a href="services.php">
+          <button class="action-btn">
+            <ion-icon name="apps-outline"></ion-icon>
+            <p>Services</p>
+
           </button>
         </a>
+         
+        <a href="clients.php">
+  <button class="action-btn">
+    <ion-icon name="trophy-outline"></ion-icon>
+    <p>Clients</p>
+  </button>
+</a>
+
+
         </div>
 
       </div>
@@ -276,7 +322,8 @@
                 <a href="windcheaters.php">Windcheaters</a>
               </li>
 
-              
+             
+
             </ul>
           </li>
 
@@ -305,7 +352,7 @@
                 <a href="laptopbag.php">Laptop Bags</a>
               </li>
 
-           
+             
 
               <li class="dropdown-item">
                 <a href="trekkingbag.php">Trekking Bag</a>
@@ -390,8 +437,6 @@
                 <a href="housekeeping.php">House Keeping Staff Uniforms </a>
               </li>
 
-            
-
               <li class="dropdown-item">
                 <a href="delivery.php">Delivery staff Uniforms </a>
               </li>
@@ -402,6 +447,9 @@
 
             </ul>
           </li>
+
+
+
 
           <li class="menu-category">
             <a href="clients.php" class="menu-title">Clients</a>
@@ -582,7 +630,8 @@
               <a href="laptopbag.php" class="submenu-title">Laptop Bags</a>
             </li>
 
-        
+           
+
             <li class="submenu-category">
               <a href="trekkingbag.php" class="submenu-title">Trekking Bag</a>
             </li>
@@ -636,6 +685,7 @@
             <li class="submenu-category">
               <a href="leatherorganizer.php" class="submenu-title">Leather Organizers</a>
             </li>
+
 
           </ul>
 
@@ -1102,7 +1152,26 @@ $category_filter = 'school'; ?>
     // Set an initial code when the page loads
     window.onload = refreshCode;
   </script>
-  
+  <!-- For searcha button -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const searchBar = document.getElementById("searchBar");
+    const showcases = document.querySelectorAll(".showcase");
+
+    searchBar.addEventListener("keyup", function () {
+        const query = searchBar.value.toLowerCase();
+
+        showcases.forEach(showcase => {
+            const title = showcase.querySelector(".showcase-title").innerText.toLowerCase();
+            if (title.includes(query)) {
+                showcase.style.display = "block";
+            } else {
+                showcase.style.display = "none";
+            }
+        });
+    });
+});
+</script>
 </body>
 
 </html>

@@ -13,11 +13,6 @@
 
 
 <style>
-
-
-    .service-title {
-        color: var(--salmon-pink);
-    }
     /* Modal styles */
     .modal-container {
         display: none;
@@ -33,11 +28,10 @@
     }
 
     .modal-content-box {
-    max-width: 80%;
-    max-height: 80vh;
-    object-fit: contain;
-}
-
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 10px;
+    }
 
     .close-btn {
         position: absolute;
@@ -50,9 +44,8 @@
 
     /* Service section styles */
     .service-section {
-        display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    gap: 20px; /* Space between cards */    }
+        margin-bottom: 40px;
+    }
 
     .service-image {
         width: 100%;
@@ -63,14 +56,11 @@
 
     .service-box {
         display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    background: #fff;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        margin-bottom: 20px;
     }
 
     .service-banner-container {

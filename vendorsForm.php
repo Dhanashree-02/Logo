@@ -151,7 +151,26 @@ $conn->close();
             }
         });
     </script>
+<!-- For searcha button -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const searchBar = document.getElementById("searchBar");
+    const showcases = document.querySelectorAll(".showcase");
 
+    searchBar.addEventListener("keyup", function () {
+        const query = searchBar.value.toLowerCase();
+
+        showcases.forEach(showcase => {
+            const title = showcase.querySelector(".showcase-title").innerText.toLowerCase();
+            if (title.includes(query)) {
+                showcase.style.display = "block";
+            } else {
+                showcase.style.display = "none";
+            }
+        });
+    });
+});
+</script>
 </body>
 
 </html>
