@@ -23,6 +23,161 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <!-- Custom CSS -->
   <link rel="stylesheet" href="CSS/index.css">
 </head>
+<style>
+  /* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7fc;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: #2c3e50;
+    padding-top: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: 0.3s;
+}
+
+.sidebar h3 {
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.sidebar a {
+    display: block;
+    color: #ddd;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.sidebar a i {
+    margin-right: 10px;
+}
+
+.sidebar a:hover {
+    background: #34495e;
+    color: #fff;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 260px;
+    padding: 20px;
+    width: calc(100% - 260px);
+    transition: 0.3s;
+}
+
+.main-content h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Overview Cards */
+.small-card {
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.small-card:hover {
+    transform: scale(1.05);
+}
+
+.small-card h5 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Tables */
+.table-responsive {
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.table thead {
+    background: #34495e;
+    color: #fff;
+}
+
+.table tbody tr:hover {
+    background: rgba(52, 73, 94, 0.1);
+}
+
+.table img {
+    border-radius: 5px;
+    transition: transform 0.3s;
+}
+
+.table img:hover {
+    transform: scale(1.2);
+}
+
+/* Buttons */
+.btn-warning {
+    background: #f39c12;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-warning:hover {
+    background: #e67e22;
+}
+
+.btn-danger {
+    background: #e74c3c;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 60px;
+    }
+    .sidebar h3 {
+        display: none;
+    }
+    .sidebar a {
+        text-align: center;
+        font-size: 18px;
+        padding: 10px;
+    }
+    .sidebar a i {
+        margin-right: 0;
+    }
+    .main-content {
+        margin-left: 70px;
+        width: calc(100% - 70px);
+    }
+}
+
+</style>
 <body>
   
   <!-- Sidebar -->
@@ -35,7 +190,6 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <a href="admin_orders.php"><i class="fas fa-shopping-cart"></i> Orders</a>
     <a href="customers.php"><i class="fas fa-users"></i> Customers</a>
     <a href="clients.php"><i class="fas fa-briefcase"></i> Clients</a>
-    <a href="slider.php"><i class="fas fa-images"></i> Slider</a>
     <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
   </div>
 
@@ -53,6 +207,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <thead class="table-dark">
         <tr>
           <th>ID</th>
+          <th>Image</th>
           <th>Name</th>
           <th>Category</th>
           <th>Price</th>
@@ -65,12 +220,21 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php foreach ($products as $product): ?>
         <tr>
           <td><?php echo htmlspecialchars($product['id']); ?></td>
+          <td>
+            <img src="uploads/<?php echo htmlspecialchars($product['image_default']); ?>" 
+                 onmouseover="this.src='uploads/<?php echo htmlspecialchars($product['image_hover']); ?>'"
+                 onmouseout="this.src='uploads/<?php echo htmlspecialchars($product['image_default']); ?>'"
+                 class="img-thumbnail" style="width: 70px; height: 70px;">
+          </td>
           <td><?php echo htmlspecialchars($product['name']); ?></td>
           <td><?php echo htmlspecialchars($product['category']); ?></td>
           <td>Rs. <?php echo number_format($product['price'], 2); ?></td>
           <td><?php echo htmlspecialchars($product['stock']); ?></td>
           <td><?php echo htmlspecialchars($product['discount_price']); ?>%</td>
           <td>
+            <a href="view_product.php?id=<?php echo $product['id']; ?>" class="btn btn-sm btn-info">
+              <i class="fas fa-eye"></i> View
+            </a>
             <a href="edit_product.php?id=<?php echo $product['id']; ?>" class="btn btn-sm btn-warning">
               <i class="fas fa-edit"></i> Edit
             </a>
@@ -83,121 +247,6 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
       </tbody>
     </table>
   </div>
-
-<!-- Add Product Modal -->
-<div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <form action="add_product.php" method="POST" enctype="multipart/form-data" class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addProductModalLabel">Add New Product</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- Product Name -->
-        <div class="mb-3">
-          <label for="name" class="form-label">Product Name</label>
-          <input type="text" class="form-control" id="name" name="name" required>
-        </div>
-
-        <!-- Category -->
-      <div class="mb-3">
-        <label for="category" class="form-label">Category</label>
-        <select class="form-control" id="category" name="category" required>
-          <option value="">Select Product</option>
-          <option value="round_neck_tshirt">Round Neck T-shirt</option>
-          <option value="v_neck_tshirt">V Neck T-shirt</option>
-          <option value="pool_tshirt">Pool T-shirt</option>
-          <option value="cutSew">Cut And Sew T-Shirt</option>
-          <option value="basicpool">Basic Pool Tshirt</option>
-
-          <option value="cap">Cap</option>
-          <option value="jacket">Jacket</option>
-          <option value="sweartshirt">Sweart Shirt</option>
-          <option value="denimShirt">Denim Shirt</option>
-          <option value="windcheaters">Wind Cheaters</option>
-          <option value="ties">Tie</option>
-
-          <option value="handbag">Handbag</option>
-          <option value="strolleybag">Strolley Bag</option>
-          <option value="travelbag">Travel Bag</option>
-          <option value="backpacks">Back Packs</option>
-          <option value="laptopbag">Laptop Bag</option>
-          <option value="laptopcumbag">Laptop Cum Bag</option>
-          <option value="trekkingbag">Trekking Bag</option>
-          <option value="passport">Passport Holder</option>
-          <option value="ipad">I Pad Pouch</option>
-          <option value="laptophandbag">Laptop Hand Bag</option>
-          <option value="laptopPouch">Laptop Pouch</option>
-
-
-          <option value="leatherofficebag">leather Office Bag</option>
-          <option value="leatherpassport">leather passport Holder</option>
-          <option value="leatherwallets">leather Wallets</option>
-          <option value="leatherorganizer">leather Oraganizer</option>
-          <option value="leathergift">leather Gift Set</option>
-
-          <option value="school">School Uniforms</option>
-          <option value="corporate">Corporate Uniforms </option>
-          <option value="security">Security Uniforms </option>
-          <option value="hotal">Hotal & Restaurant Uniforms</option>
-          <option value="medical">Medical & Hospital Uniforms</option>
-
-          <option value="bank">Bank Uniforms </option>
-          <option value="government">Government Uniforms </option>
-          <option value="housekeeping">HouseKeeping Staff Uniforms </option>
-          <option value="privatesector">Security Uniforms </option>
-          <option value="delivery">Delivery Uniforms </option>
-          <option value="sports">Sports Uniforms </option>  
-
-
-        </select>
-      </div>
-
-
-        <!-- Price -->
-        <div class="mb-3">
-          <label for="price" class="form-label">Price</label>
-          <input type="number" step="0.01" class="form-control" id="price" name="price" required>
-        </div>
-
-        <!-- Discount Price -->
-        <div class="mb-3">
-          <label for="discount_price" class="form-label">Discount Price</label>
-          <input type="number" step="0.01" class="form-control" id="discount_price" name="discount_price" required>
-        </div>
-
-        <!-- Rating -->
-        <div class="mb-3">
-          <label for="rating" class="form-label">Rating</label>
-          <input type="number" class="form-control" id="rating" name="rating" min="0" max="5" step="0.1" required>
-        </div>
-
-        <!-- Stock -->
-        <div class="mb-3">
-          <label for="stock" class="form-label">Stock</label>
-          <input type="number" class="form-control" id="stock" name="stock" required>
-        </div>
-
-        <!-- Default Image -->
-        <div class="mb-3">
-          <label for="image_default" class="form-label">Default Image</label>
-          <input type="file" class="form-control" id="image_default" name="image_default" required>
-        </div>
-
-        <!-- Hover Image -->
-        <div class="mb-3">
-          <label for="image_hover" class="form-label">Logo Image</label>
-          <input type="file" class="form-control" id="image_hover" name="image_hover" required>
-        </div>
-      </div>
-      <div class="modal-footer">
-       <button type="submit" class="btn btn-primary">Add Product</button>
-       <button type="button" class="btn btn-secondary" data-bs-dis
-        miss="modal">Close</button>
-      </div>
-    </form>
-  </div>
-</div>
 
   <!-- Include Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
