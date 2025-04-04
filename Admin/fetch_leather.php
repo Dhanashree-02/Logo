@@ -104,7 +104,7 @@
         die("Database connection failed.");
     }
 
-    $categories = ["leatherofficebag", "leatherpassport", "leatherwallets", "leatherorganizer", "leathergift"];
+    $categories = ["leatherofficebag", "leatherpassport", "leatherwallets", "leatherorganizer",];
 
     foreach ($categories as $category) {
         echo "<div class='service-section'>";

@@ -106,7 +106,7 @@ if (!$pdo) {
     die("Database connection failed.");
 }
 
-$categories = ["round_neck_tshirt", "v_neck_tshirt", "pool_tshirt", "cutSew", "basicpool"];
+$categories = ["round_neck_tshirt", "v_neck_tshirt", "pool_tshirt", "cutSew"];
 
 foreach ($categories as $category) {
     echo "<div class='service-section'>";

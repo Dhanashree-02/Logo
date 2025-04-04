@@ -104,7 +104,7 @@
         die("Database connection failed.");
     }
 
-    $categories = ["school", "corporate", "security", "hotal", "medical"];
+    $categories = ["school", "corporate", "security", "hotal",];
 
     foreach ($categories as $category) {
         echo "<div class='service-section'>";

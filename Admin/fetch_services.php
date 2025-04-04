@@ -128,7 +128,7 @@
         die("Database connection failed.");
     }
 
-    $categories = ["Medical", "Corporate", "School", "Hotal", "Security"];
+    $categories = ["Medical", "Corporate", "School", "Hotal"];
 
     foreach ($categories as $category) {
         echo "<div class='showcase'>";
@@ -208,7 +208,7 @@
                         event.preventDefault();
                         const imgSrc = this.getAttribute("data-img");
                         modalImg.src = imgSrc;
-                        modal.style.display = "flex";
+                        modal.style.display = "flex;";
                     });
                 });
 
