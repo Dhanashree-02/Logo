@@ -810,68 +810,7 @@ $category_filter = 'passport'; ?>
 
         </div>
 
-<!--
-  - SIDEBAR
--->
-
-<div class="sidebar has-scrollbar" data-mobile-menu>
-  <div class="sidebar-category">
-    <div class="sidebar-top">
-    <h2 class="sidebar-title">Contact Form</h2>
-
-        <button class="sidebar-close-btn" data-mobile-menu-close-btn>
-          <ion-icon name="close-outline"></ion-icon>
-        </button>
-    </div>
-    <ul class="sidebar-menu-category-list">
-      <li class="sidebar-menu-category">
-      <form action="submit_contact.php" method="post" id="contactForm" onsubmit="return validateCode()">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Enter your full name" required>
-        </div>
-
-        <div class="menu-title-flex">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required>
-          </div>
-        </div>
-      </li>
-      <li class="sidebar-menu-category">
-        <div class="menu-title-flex">
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Write your message here" required></textarea>
-          </div>
-        </div>
-      </li>
-      <li class="sidebar-menu-category">
-        <div class="menu-title-flex">
-          <div class="form-group">
-            <label for="verificationCode">Code</label>
-            <input type="text" id="verificationCode" name="verificationCode" required>
-            <div id="codeDisplay" class="code-box">ABC123</div>
-          </div>
-        </div>
-      </li>
-      <li class="sidebar-menu-category">
-        <div class="menu-title-flex">
-          <div class="form-group">
-            <button type="button" id="refreshCodeBtn">Refresh Code</button>
-          </div>
-        </div>
-      </li>
-      <li class="sidebar-menu-category">
-        <div class="menu-title-flex">
-          <button type="submit" class="submit-btn">Submit</button>
-        </div>
-      </li>
-      </form>
-    </ul>
-  </div>
-</div>
-        
+    
       </div>
 
     </div>
