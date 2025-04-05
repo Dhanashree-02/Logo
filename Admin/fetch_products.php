@@ -134,7 +134,7 @@
 
     .showcase-content {
       text-align: center;
-      margin-top: -10px;
+      margin-top: -1  0px;
     }
   </style>
 </head>
