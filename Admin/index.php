@@ -240,10 +240,10 @@ body {
   </div>
 
   <div class="col-md-3">
-    <a href="customers.php">
+    <a href="contact.php">
       <div class="card text-white bg-danger small-card">
         <div class="card-body">
-          <h5 class="card-title">Customers</h5>
+          <h5 class="card-title">Contact </h5>
           <!-- <p class="card-text">12</p> -->
         </div>
       </div>
