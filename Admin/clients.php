@@ -52,16 +52,8 @@ try {
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="CSS/index.css">
 </head>
-<style>
-  /* General Styles */
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f4f7fc;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
 
+<style>
 /* Sidebar */
 .sidebar {
     width: 250px;
@@ -210,6 +202,7 @@ body {
 <body>
 
   <!-- Sidebar -->
+
   <div class="sidebar">
     <div class="text-center py-4">
       <h3>My Dashboard</h3>
@@ -217,12 +210,18 @@ body {
     <a href="index.php"><i class="fas fa-chart-line"></i> Overview</a>
     <a href="Products.php"><i class="fas fa-box-open"></i> Products</a>
     <a href="admin_orders.php"><i class="fas fa-shopping-cart"></i> Orders</a>
-    <a href="customers.php"><i class="fas fa-users"></i> Customers</a>
+    <!-- <a href="customers.php"><i class="fas fa-users"></i> Customers</a> -->
     <!-- <a href="#settings"><i class="fas fa-cog"></i> Settings</a> -->
     <a href="clients.php"><i class="fas fa-briefcase"></i> Clients</a>
     <!-- <a href="slider.php"><i class="fas fa-images"></i> Slider</a> -->
-    <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    <a href="contact.php"><i class="fas fa-address-book"></i> Contact Info</a>
+
+    <a href="#" onclick="confirmLogout()" >
+    <i class="fas fa-sign-out-alt"></i> Logout
+    </a>
+  
   </div>
+  
 
   <!-- Main Content -->
   <div class="main-content">
@@ -301,6 +300,14 @@ body {
       </div>
     </div>
   </div>
+
+  <script>
+function confirmLogout() {
+  if (confirm("Are you sure you want to logout?")) {
+    window.location.href = "logout.php";
+  }
+}
+</script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

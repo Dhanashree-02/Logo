@@ -189,12 +189,18 @@ body {
     <a href="index.php"><i class="fas fa-chart-line"></i> Overview</a>
     <a href="Products.php"><i class="fas fa-box-open"></i> Products</a>
     <a href="admin_orders.php"><i class="fas fa-shopping-cart"></i> Orders</a>
-    <a href="customers.php"><i class="fas fa-users"></i> Customers</a>
+    <!-- <a href="customers.php"><i class="fas fa-users"></i> Customers</a> -->
     <!-- <a href="#settings"><i class="fas fa-cog"></i> Settings</a> -->
     <a href="clients.php"><i class="fas fa-briefcase"></i> Clients</a>
     <!-- <a href="slider.php"><i class="fas fa-images"></i> Slider</a> -->
-    <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
-  </div>
+    <a href="contact.php"><i class="fas fa-address-book"></i> Contact Info</a>
+
+    <a href="#" onclick="confirmLogout()" >
+    <i class="fas fa-sign-out-alt"></i> Logout
+    </a>
+
+</div>
+  
 <?php
 // Database connection
 $conn = new mysqli('localhost', 'root', '', 'Logo');
@@ -255,6 +261,14 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
   
+  <script>
+function confirmLogout() {
+  if (confirm("Are you sure you want to logout?")) {
+    window.location.href = "logout.php";
+  }
+}
+</script>
+
   <!-- Include Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

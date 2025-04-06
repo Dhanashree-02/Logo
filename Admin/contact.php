@@ -1,38 +1,44 @@
 <?php
-include 'db.php';  // Include your database connection
+$host = 'localhost';
+$dbname = 'logo';
+$username = 'root';
+$password = '';
 
-// Fetch products from the database
-$query = "SELECT * FROM products"; // Modify this based on your table name and columns
-$stmt = $pdo->query($query);
-$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+try {
+  $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+  $search = $_GET['search'] ?? '';
+  if (!empty($search)) {
+    $stmt = $pdo->prepare("SELECT * FROM contact_form WHERE email LIKE ? OR message LIKE ? ORDER BY id DESC");
+    $stmt->execute(["%$search%", "%$search%"]);
+  } else {
+    $stmt = $pdo->query("SELECT * FROM contact_form ORDER BY id DESC");
+  }
+
+  $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+  die("Database connection failed: " . $e->getMessage());
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Products Dashboard</title>
-  <!-- Include Bootstrap CSS -->
+  <title>Admin Contact Page</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Include Font Awesome for Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <!-- Include Ionicons -->
-  <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <!-- Custom CSS -->
   <link rel="stylesheet" href="CSS/index.css">
-</head>
-<style>
-  /* General Styles */
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f4f7fc;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
+  <style>
+    .mb-4 {
+        text-align: center;
+    }
+  </style>
 
+<style>
 /* Sidebar */
 .sidebar {
     width: 250px;
@@ -178,8 +184,11 @@ body {
 }
 
 </style>
-<body>
-  
+
+</head>
+
+<body class="bg-light">
+
   <!-- Sidebar -->
   <div class="sidebar">
     <div class="text-center py-4">
@@ -197,65 +206,70 @@ body {
     <a href="#" onclick="confirmLogout()" >
     <i class="fas fa-sign-out-alt"></i> Logout
     </a>
-
+  
   </div>
 
-  <!-- Main Content -->
   <div class="main-content">
-    <h1 class="mb-4">Product Management</h1>
+<div class="container mt-5">
+  <h2 class="mb-4">Contact Submissions</h2>
 
-    <!-- Add Product Button -->
-    <div class="mb-3">
-      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">Add New Product</button>
-    </div>
+  <!-- Search Form -->
+  <div class="d-flex justify-content-center mb-4">
+  <form method="get" class="col-md-6 col-sm-8 mb-2 mb-sm-0">
+    <input type="text" name="search" class="form-control mr-2" placeholder="Search by email or message" value="<?= htmlspecialchars($search) ?>">
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+</div>
 
-    <!-- Product Table -->
-    <table class="table table-striped">
-      <thead class="table-dark">
+
+  <?php if (count($contacts) > 0): ?>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
         <tr>
           <th>ID</th>
-          <th>Image</th>
           <th>Name</th>
-          <th>Category</th>
-          <th>Price</th>
-          <th>Stock</th>
-          <th>Discount</th>
-          <th>Actions</th>
+          <th>Email</th>
+          <th>Message</th>
+          <th>Time</th>
+          <th>Reply</th>
+          <th>Read</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($products as $product): ?>
-        <tr>
-          <td><?php echo htmlspecialchars($product['id']); ?></td>
-          <td>
-            <img src="uploads/<?php echo htmlspecialchars($product['image_default']); ?>" 
-                 onmouseover="this.src='uploads/<?php echo htmlspecialchars($product['image_hover']); ?>'"
-                 onmouseout="this.src='uploads/<?php echo htmlspecialchars($product['image_default']); ?>'"
-                 class="img-thumbnail" style="width: 70px; height: 70px;">
-          </td>
-          <td><?php echo htmlspecialchars($product['name']); ?></td>
-          <td><?php echo htmlspecialchars($product['category']); ?></td>
-          <td>Rs. <?php echo number_format($product['price'], 2); ?></td>
-          <td><?php echo htmlspecialchars($product['stock']); ?></td>
-          <td><?php echo htmlspecialchars($product['discount_price']); ?>%</td>
-          <td>
-            <a href="view_product.php?id=<?php echo $product['id']; ?>" class="btn btn-sm btn-info">
-              <i class="fas fa-eye"></i> View
-            </a>
-            <a href="edit_product.php?id=<?php echo $product['id']; ?>" class="btn btn-sm btn-warning">
-              <i class="fas fa-edit"></i> Edit
-            </a>
-            <a href="delete_product.php?id=<?php echo $product['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this product?');">
-              <i class="fas fa-trash-alt"></i> Delete
-            </a>
-          </td>
-        </tr>
+        <?php foreach ($contacts as $contact): ?>
+          <tr class="<?= $contact['is_read'] ? 'table-secondary' : '' ?>">
+            <td><?= $contact['id'] ?></td>
+            <td><?= htmlspecialchars($contact['name']) ?></td>
+            <td><?= htmlspecialchars($contact['email']) ?></td>
+            <td><?= htmlspecialchars($contact['message']) ?></td>
+            <td><?= date("d M Y, h:i A", strtotime($contact['created_at'])) ?></td>
+            <td><a href="mailto:<?= $contact['email'] ?>" class="btn btn-sm btn-info">Reply</a></td>
+            <td>
+              <form method="post" action="mark_read.php">
+                <input type="hidden" name="id" value="<?= $contact['id'] ?>">
+                <button type="submit" class="btn btn-sm <?= $contact['is_read'] ? 'btn-secondary' : 'btn-success' ?>">
+                  <?= $contact['is_read'] ? 'Mark Unread' : 'Mark Read' ?>
+                </button>
+              </form>
+            </td>
+            <td>
+              <form method="post" action="delete_contact.php" onsubmit="return confirm('Are you sure you want to delete this contact?');">
+                <input type="hidden" name="id" value="<?= $contact['id'] ?>">
+                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+              </form>
+            </td>
+          </tr>
         <?php endforeach; ?>
       </tbody>
     </table>
-  </div>
+  <?php else: ?>
+    <div class="alert alert-info">No contact entries found.</div>
+  <?php endif; ?>
+</div>
+</div>
 
-  <script>
+<script>
 function confirmLogout() {
   if (confirm("Are you sure you want to logout?")) {
     window.location.href = "logout.php";
@@ -263,7 +277,5 @@ function confirmLogout() {
 }
 </script>
 
-  <!-- Include Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

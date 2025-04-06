@@ -38,12 +38,18 @@ $result = $conn->query($sql);
     <a href="index.php"><i class="fas fa-chart-line"></i> Overview</a>
     <a href="Products.php"><i class="fas fa-box-open"></i> Products</a>
     <a href="admin_orders.php"><i class="fas fa-shopping-cart"></i> Orders</a>
-    <a href="customers.php"><i class="fas fa-users"></i> Customers</a>
+    <!-- <a href="customers.php"><i class="fas fa-users"></i> Customers</a> -->
     <!-- <a href="#settings"><i class="fas fa-cog"></i> Settings</a> -->
     <a href="clients.php"><i class="fas fa-briefcase"></i> Clients</a>
-    <a href="slider.php"><i class="fas fa-images"></i> Slider</a>
-    <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
-  </div>
+    <!-- <a href="slider.php"><i class="fas fa-images"></i> Slider</a> -->
+    <a href="contact.php"><i class="fas fa-address-book"></i> Contact Info</a>
+
+    <a href="#" onclick="confirmLogout()" >
+    <i class="fas fa-sign-out-alt"></i> Logout
+    </a>
+
+</div>
+  
   <div class="main-content">
     <div class="container mt-4">
         <h2>Manage Slider Images</h2>
@@ -98,6 +104,13 @@ $result = $conn->query($sql);
 
     </div>
   </div>
+  <script>
+function confirmLogout() {
+  if (confirm("Are you sure you want to logout?")) {
+    window.location.href = "logout.php";
+  }
+}
+</script>
 </body>
 </html>
 

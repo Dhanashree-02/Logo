@@ -17,6 +17,10 @@
   -->
   <link rel="stylesheet" href="./assets/css/style-prefix.css">
 
+  <!-- Include Bootstrap CSS & JS if not already included -->
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
   <!--
     - google font link
   -->
@@ -25,6 +29,125 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
     
+<style>
+  .custom-slider {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.custom-slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.custom-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.custom-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.custom-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.custom-caption {
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 8px;
+  max-width: 90%;
+}
+
+.custom-caption h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.custom-caption p {
+  font-size: 18px;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 2;
+  border-radius: 50%;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+</style>
+
+<style>
+      .product-container a {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+.product-container ul {
+  padding-left: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.product-container ul li {
+  list-style: none !important;
+}
+
+#aboutCarousel {
+  max-height: 400px; /* Set the desired height */
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+#aboutCarousel .carousel-item img {
+  height: 400px; /* Match the height */
+  object-fit: cover;
+  width: 100%;
+}
+
+.carousel-caption {
+  bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.5); /* Optional overlay for better text visibility */
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+</style>
+
     <style>
 
 .action-btn {
@@ -68,8 +191,6 @@
   text-align: justify;
 }
 
-
-
 /* Address container styling */
 .address-container {
   padding: 25px;
@@ -103,29 +224,36 @@
   color: #444;
   line-height: 1.6;
 }
+
+.address-container ul {
+  list-style: none; /* Remove default bullets */
+  padding-left: 0;
+}
+
 .address-container ul li {
+  position: relative;
   font-size: 18px;
   color: #444;
-  padding: 8px 0;
-  display: flex;
-  align-items: center;
+  padding: 8px 0 8px 30px; /* Left padding for the icon */
   transition: color 0.3s ease-in-out;
 }
-/* Custom bullet icons */
+
+/* Custom orange tick */
 .address-container ul li::before {
-  content: "✔"; /* Checkmark symbol */
-  color: orangered;
+  content: "✔"; /* Two checkmarks */
+  color: black;
   font-weight: bold;
   margin-right: 10px;
   font-size: 20px;
 }
 
-/* Hover effect */
-.address-container ul li:hover {
-  color: orangered;
-  transform: translateX(5px);
-  transition: all 0.3s ease;
+.address-container ul li::before {
+  background: linear-gradient(to right, orangered 50%, orange 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+
+
 
 /* Sidebar styling */
 .sidebar {
@@ -394,6 +522,7 @@
             <a href="index.php" class="menu-title">Embroidery 
             </a>
           </li>
+        
 
           <li class="menu-category">
             <a href="about.php" class="menu-title">About
@@ -407,7 +536,7 @@
 
 
           <li class="menu-category">
-            <a href="tshirt.php" class="menu-title">Tshirt</a>
+            <a href="tshirt.php" class="menu-title">T/Shirt</a>
 
             <ul class="dropdown-list">
 
@@ -907,6 +1036,38 @@
     </div>
 
 
+<!-- Image Slider Section -->
+<div class="custom-slider">
+  <div class="custom-slides">
+    <div class="custom-slide active">
+      <img src="assets/images/banner-1.jpg" alt="About Image 1">
+      <div class="custom-caption">
+        <h2>Welcome to Shree Graphics Design</h2>
+        <p>Expert Embroidery and Logo Designing Services</p>
+      </div>
+    </div>
+
+    <div class="custom-slide">
+      <img src="assets/images/banner-2.jpg" alt="About Image 2">
+      <div class="custom-caption">
+        <h2>Bring Your Brand to Life</h2>
+        <p>Custom Logos, Apparel Printing, and More</p>
+      </div>
+    </div>
+
+    <div class="custom-slide">
+      <img src="assets/images/banner-3.jpg" alt="About Image 3">
+      <div class="custom-caption">
+        <h2>Quality Meets Creativity</h2>
+        <p>Let your brand speak with our designs</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation buttons -->
+  <button class="prev" onclick="changeSlide(-1)">❮</button>
+  <button class="next" onclick="changeSlide(1)">❯</button>
+</div>
 
 
 
@@ -934,7 +1095,7 @@
 
         <div class="address-container">
           <h3>What We Offer</h3>
-          <ul>
+          <ul >
             <li>Custom Embroidery Logo Designs</li>
             <li>High-Quality Digital Logo Creation</li>
             <li>Branding for Schools, Businesses, and Events</li>
@@ -1272,6 +1433,30 @@
     window.onload = refreshCode;
   </script>
   
+<!-- For Slider -->
+<script>
+  const slides = document.querySelectorAll('.custom-slide');
+  let currentSlide = 0;
+  let slideInterval = setInterval(autoSlide, 4000);
+
+  function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    slides[index].classList.add('active');
+  }
+
+  function changeSlide(direction) {
+    clearInterval(slideInterval); // Stop auto sliding on manual change
+    currentSlide = (currentSlide + direction + slides.length) % slides.length;
+    showSlide(currentSlide);
+    slideInterval = setInterval(autoSlide, 4000); // Restart auto sliding
+  }
+
+  function autoSlide() {
+    changeSlide(1);
+  }
+</script>
+
+
 </body>
 
 </html>
